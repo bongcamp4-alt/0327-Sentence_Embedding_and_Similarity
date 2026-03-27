@@ -79,7 +79,7 @@ if user_query := st.chat_input("여기에 질문을 입력하세요... (예: 쓰
             # 사용자 질문을 벡터로 변환 후 검색
             query_vec = model.encode([user_query]).astype('float32')
             faiss.normalize_L2(query_vec)
-            scores, indices = index.search(query_vec, top_k=1)
+            scores, indices = index.search(query_vec, 1)
             
             best_score = float(scores[0][0])
             best_idx = indices[0][0]
